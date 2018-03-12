@@ -8,3 +8,64 @@ html {
     -webkit-box-sizing: inherit;
     -moz-box-sizing: inherit;
 }
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.5;
+    margin: 0;
+}
+.navigation-wrapper {
+    width: 100%;
+    background-color: #5fa09a;
+}
+.navigation-content {
+    max-width: 1024px;
+    height: 60px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.company-name {
+    color: #fff;
+    font-size: 1.5em;
+    text-decoration: none;
+}
+.search-content {
+    display: flex;
+    border: #a3a3a3;
+}
+.navigation-content input {
+    width: 300px;
+    padding: 0.8em;
+    border: none;
+}
+.navigation-content input:focus {
+    outline-color: black;
+}
+.search {
+    background-color: #eee;
+    border: none;
+    cursor: pointer;
+}
+.search:hover {
+    background-color: #ddd;
+}
+.search:focus {
+  outline-color: black;
+}
+.search img {
+    height: 20px;
+    width: 20px;
+}
+
+.auction-wrapper {
+    max-width: 1024px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+.auction-wrapper div {
+    width: 20%;
+}
