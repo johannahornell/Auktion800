@@ -66,3 +66,6 @@ body {
     display: flex;
     justify-content: space-between;
 }
+.auction-wrapper div {
+    width: 20%;
+}
