@@ -9,7 +9,7 @@ async function fetchData(url)
 async function loadFile()
 {
     let auktionUrl = await fetchData('http://nackowskis.azurewebsites.net/api/Auktion/800/');
-    let test = document.getElementById("test").innerHTML = auktionUrl[0].Titel;
+    let title1 = document.getElementById("title1").innerHTML = auktionUrl[0].Titel;
 }
 
 loadFile();
