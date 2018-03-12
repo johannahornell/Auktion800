@@ -8,8 +8,8 @@ async function fetchData(url)
 
 async function loadFile()
 {
+    let auktionUrl = await fetchData('http://nackowskis.azurewebsites.net/api/Auktion/800/8');
    
-    let auktionUrl = await fetchData('http://nackowskis.azurewebsites.net/api/Auktion/800/');
     let title1 = document.getElementById("title1");
     let title2 = document.getElementById("title2");
     let title3 = document.getElementById("title3");
