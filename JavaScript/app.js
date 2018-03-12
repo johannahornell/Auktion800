@@ -1,4 +1,4 @@
-async function fetchData(url) 
+async function fetchData(url)
 {
     let promise = await fetch(url);
     let data = await promise.json();
@@ -8,15 +8,8 @@ async function fetchData(url)
 
 async function loadFile()
 {
-    let auktionUrl = await fetchData('http://nackowskis.azurewebsites.net/api/Auktion/800');
-<<<<<<< HEAD
-   let test = document.getElementById("test").innerHTML = auktionUrl[0].Titel;
-    
-=======
-   
+    let auktionUrl = await fetchData('http://nackowskis.azurewebsites.net/api/Auktion/800/');
     let test = document.getElementById("test").innerHTML = auktionUrl[0].Titel;
->>>>>>> master
-   
 }
 
 loadFile();
