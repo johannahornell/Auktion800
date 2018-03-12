@@ -9,8 +9,13 @@ async function fetchData(url)
 async function loadFile()
 {
     let auktionUrl = await fetchData('http://nackowskis.azurewebsites.net/api/Auktion/800');
+<<<<<<< HEAD
+   let test = document.getElementById("test").innerHTML = auktionUrl[0].Titel;
+    
+=======
    
     let test = document.getElementById("test").innerHTML = auktionUrl[0].Titel;
+>>>>>>> master
    
 }
 
