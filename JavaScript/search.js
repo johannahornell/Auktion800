@@ -1,5 +1,3 @@
-var searchButton = document.getElementById("search-button");
-
 function searchAuction(){
 
     let searchValue = document.getElementById("search-input").value;
