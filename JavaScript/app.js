@@ -10,7 +10,7 @@ async function loadFile()
 {
     let auktionUrl = await fetchData('http://nackowskis.azurewebsites.net/api/Auktion/800/');
 
-<<<<<<< HEAD
+
 for (i = 0; i < auktionUrl.length; i++) {
     let auctionWrapper = document.getElementById("auction-wrapper");
     let newDiv = document.createElement("div");
@@ -40,7 +40,7 @@ for (i = 0; i < auktionUrl.length; i++) {
         console.log('Auktionen slut');
     }
     }
-=======
+
     for (i = 0; i < auktionUrl.length; i++) {
         let auctionWrapper = document.getElementById("auction-wrapper");
         let newArticle = document.createElement("article");
@@ -73,7 +73,6 @@ for (i = 0; i < auktionUrl.length; i++) {
         auctionWrapper.appendChild(newArticle);
 
   }
->>>>>>> master
 }
 
 loadFile();
