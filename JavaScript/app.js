@@ -24,6 +24,20 @@ for (i = 0; i < auktionUrl.length; i++) {
         '<p>UTROPSPRIS: ' + auktionUrl[i].Utropspris + ' kr' + '</p>';
     newDiv.innerHTML = temp;
     auctionWrapper.appendChild(newDiv);
+
+    //gör om json datum till jämförbar tid
+    endDate = new Date(auktionUrl[i].SlutDatum).getTime();
+    
+    //gör om dagens datum till jämförbar tid
+    let dagensDatum = new Date().getTime();
+
+    //if-sats som får ta bort utgågna auktioner
+    if(endDate > dagensDatum) {
+        console.log('Fortfarande aktuell');
+    }
+    else {
+        console.log('Auktionen slut');
+    }
     }
 }
 loadFile();
