@@ -61,11 +61,16 @@ body {
 }
 
 .auction-wrapper {
-    max-width: 1024px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
+    flex-direction: column;
 }
 .auction-wrapper div {
-    width: 20%;
+    width: 49%;
+    background-color: rgb(180, 192, 188);
+    border-bottom: 1px solid black;
+}
+.auction-wrapper li {
+    list-style: none;
 }
