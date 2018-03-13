@@ -65,6 +65,9 @@ body {
     flex-direction: column;
     text-align: center;
 }
+.auction-wrapper article {
+    display: flex;
+}
 
 .auction-wrapper div {
     width: 50%;
