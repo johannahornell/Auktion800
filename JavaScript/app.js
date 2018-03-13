@@ -87,9 +87,9 @@ for (i = 0; i < auktionUrl.length; i++) {
         newArticle.appendChild(newDivBid);
         auctionWrapper.appendChild(newArticle);
 
-        }
     }
 }
+
 
 
 loadFile();
