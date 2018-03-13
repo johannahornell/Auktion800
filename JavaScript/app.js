@@ -22,7 +22,7 @@ async function loadFile()
         let bidBtn = document.createElement("input");
         bidBtn.setAttribute("type", "button");
         bidBtn.setAttribute("value", "Bud");
-        bidBtn.addEventListener("click", loadBid(auktionUrl[i].AuktionID));
+        /*bidBtn.addEventListener("click", loadBid(auktionUrl[i].AuktionID));*/
 
         let temp = '';
 
