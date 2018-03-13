@@ -34,8 +34,6 @@ for ( i = 0; i <budUrl.length; i++)
 }).then(res => res.json());
 }
 
-<<<<<<< HEAD
-=======
 function createBid() {
   fetch('http://nackowskis.azurewebsites.net/api/bud/800/'{
       method: "POST",
@@ -55,4 +53,4 @@ function createBid() {
   }).then(res => res.json())
   .then(res => console.log(res));
 }
->>>>>>> master
+
