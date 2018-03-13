@@ -41,21 +41,6 @@ for (i = 0; i < auktionUrl.length; i++) {
     newArticle.appendChild(newDivBid);
     auctionWrapper.appendChild(newArticle);
 
-    //gör om json datum till jämförbar tid
-    endDate = new Date(auktionUrl[i].SlutDatum).getTime();
-
-    //gör om dagens datum till jämförbar tid
-    let dagensDatum = new Date().getTime();
-
-    //if-sats som får ta bort utgågna auktioner
-    if(endDate > dagensDatum) {
-        console.log('Fortfarande aktuell');
-    }
-    else {
-        console.log('Auktionen slut');
-    }
-    }
-
     for (i = 0; i < auktionUrl.length; i++) {
         let auctionWrapper = document.getElementById("auction-wrapper");
         let newArticle = document.createElement("article");
@@ -86,6 +71,20 @@ for (i = 0; i < auktionUrl.length; i++) {
         newArticle.appendChild(newDivInfo);
         newArticle.appendChild(newDivBid);
         auctionWrapper.appendChild(newArticle);
+
+        //gör om json datum till jämförbar tid
+        endDate = new Date(auktionUrl[i].SlutDatum).getTime();
+
+        //gör om dagens datum till jämförbar tid
+        let dagensDatum = new Date().getTime();
+
+        //if-sats som får ta bort utgågna auktioner
+        if (endDate > dagensDatum) {
+            console.log('Fortfarande aktuell');
+        } else {
+            console.log('Auktionen slut');
+        }
+        }
 
     }
 }
