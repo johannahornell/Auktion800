@@ -17,7 +17,7 @@ body {
 }
 .navigation-wrapper {
     width: 100%;
-    background-color: #5fa09a;
+    background-color: #F53656;
 }
 .navigation-content {
     max-width: 1024px;
@@ -61,16 +61,29 @@ body {
 }
 
 .auction-wrapper {
-    margin: 0 auto;
     display: flex;
-    justify-content: space-between;
     flex-direction: column;
+    text-align: center;
 }
 .auction-wrapper div {
-    width: 49%;
-    background-color: rgb(180, 192, 188);
+    width: 50%;
+    background-color: #24292E;
     border-bottom: 1px solid black;
 }
-.auction-wrapper li {
-    list-style: none;
+.auction-wrapper h1 {
+    color: white;  
+}
+
+.auction-wrapper h4 {
+    color: white;  
+}
+
+.auction-wrapper h5 {
+    color: #52C7EB;
+}
+
+.auction-wrapper p {
+    color: green;
+    font-weight: bold;
+    font-size: 1.3rem;
 }
