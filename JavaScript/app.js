@@ -16,11 +16,11 @@ for (i = 0; i < auktionUrl.length; i++) {
 
 
     temp += '<br>' + '<ul>' +
-        '<li>TITEL: ' + auktionUrl[i].Titel + '</li>' +
-        '<li>BESKRIVNING: ' + auktionUrl[i].Beskrivning + '</li>' +
-        '<li>STARTDATUM: ' + auktionUrl[i].StartDatum + '</li>' +
-        '<li>SLUTDATUM: ' + auktionUrl[i].SlutDatum + '</li>' +
-        '<li>UTROPSPRIS: ' + auktionUrl[i].Utropspris + ' kr' + '</li>' +
+        '<h1> ' + auktionUrl[i].Titel + '</h1>' +
+        '<h4>BESKRIVNING: ' + auktionUrl[i].Beskrivning + '</h4>' +
+        '<h5>STARTDATUM: ' + auktionUrl[i].StartDatum + '</h5>' +
+        '<h5>SLUTDATUM: ' + auktionUrl[i].SlutDatum + '</h5>' +
+        '<p>UTROPSPRIS: ' + auktionUrl[i].Utropspris + ' kr' + '</p>' +
         '</ul>';
     div.innerHTML = temp;
     }
