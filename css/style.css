@@ -83,6 +83,6 @@ body {
 article div p {
     display: none;
 }
-article div p:last-child {
+article div p:nth-child(5) {
     display: block;
 }
