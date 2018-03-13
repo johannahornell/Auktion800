@@ -33,3 +33,4 @@ for ( i = 0; i <budUrl.length; i++)
 }).then(res => res.json())
 .catch(error => console.error('Error:', error))
 .then(response => console.log('Success:', response))
+}
