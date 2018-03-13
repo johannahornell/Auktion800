@@ -22,7 +22,7 @@ for ( i = 0; i <budUrl.length; i++)
    {
    	alert("Du måste ge ett större bud");
    }
-
+}
 
  fetch(budUrl, {
   method: 'POST',
@@ -33,5 +33,3 @@ for ( i = 0; i <budUrl.length; i++)
 }).then(res => res.json())
 .catch(error => console.error('Error:', error))
 .then(response => console.log('Success:', response))
-}
-}
