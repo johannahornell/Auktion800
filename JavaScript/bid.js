@@ -13,7 +13,7 @@ async function loadBid(id)
      let storstBud = 0;
 
 for ( i = 0; i <budUrl.length; i++)
-{	
+{
    if (bud > storstaBud) //om budet inte är störst.
    {
       storstaBud = bud;// skapa och lägg in i ptagg - text "Budet är för litet, skriv ett nytt"
@@ -26,7 +26,7 @@ for ( i = 0; i <budUrl.length; i++)
 
  fetch(budUrl, {
   method: 'POST',
-  body: JSON.stringify(storstBud), 
+  body: JSON.stringify(storstBud),
   headers: new Headers({
     'Content-Type': 'application/json'
   })
