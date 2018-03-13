@@ -10,14 +10,13 @@ async function loadFile()
 {
     let auktionUrl = await fetchData('http://nackowskis.azurewebsites.net/api/Auktion/800/');
 
-<<<<<<< HEAD
 for (i = 0; i < auktionUrl.length; i++) {
     let auctionWrapper = document.getElementById("auction-wrapper");
     let newDiv = document.createElement("div");
     let temp = '';
 
 
-    temp += 
+    temp +=
         '<h1> ' + auktionUrl[i].Titel + '</h1>' +
         '<h4>BESKRIVNING: ' + auktionUrl[i].Beskrivning + '</h4>' +
         '<h5>STARTDATUM: ' + auktionUrl[i].StartDatum + '</h5>' +
@@ -28,7 +27,7 @@ for (i = 0; i < auktionUrl.length; i++) {
 
     //gör om json datum till jämförbar tid
     endDate = new Date(auktionUrl[i].SlutDatum).getTime();
-    
+
     //gör om dagens datum till jämförbar tid
     let dagensDatum = new Date().getTime();
 
@@ -40,7 +39,7 @@ for (i = 0; i < auktionUrl.length; i++) {
         console.log('Auktionen slut');
     }
     }
-=======
+
     for (i = 0; i < auktionUrl.length; i++) {
         let auctionWrapper = document.getElementById("auction-wrapper");
         let newArticle = document.createElement("article");
@@ -73,7 +72,6 @@ for (i = 0; i < auktionUrl.length; i++) {
         auctionWrapper.appendChild(newArticle);
 
   }
->>>>>>> master
 }
 
 loadFile();
