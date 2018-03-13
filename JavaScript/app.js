@@ -55,10 +55,10 @@ async function loadFile()
 
       temp +=
           '<h1> ' + auktionUrl[i].Titel + '</h1>' +
-          '<h4>BESKRIVNING: ' + auktionUrl[i].Beskrivning + '</h4>' +
-          '<h5>STARTDATUM: ' + auktionUrl[i].StartDatum + '</h5>' +
-          '<h5>SLUTDATUM: ' + auktionUrl[i].SlutDatum + '</h5>' +
-          '<p>UTROPSPRIS: ' + auktionUrl[i].Utropspris + ' kr' + '</p>';
+          '<p>Beskrivning: ' + auktionUrl[i].Beskrivning + '</p>' +
+          '<p>Start: ' + auktionUrl[i].StartDatum + '</p>' +
+          '<p>Slut: ' + auktionUrl[i].SlutDatum + '</p>' +
+          '<p class="big">Utropspris: ' + auktionUrl[i].Utropspris + ' kr' + '</p>';
       newDivInfo.innerHTML = temp;
 
       newDivBid.appendChild(bidInput);
