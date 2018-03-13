@@ -27,3 +27,4 @@ for (i = 0; i < auktionUrl.length; i++) {
 }
 loadFile();
 
+
