@@ -55,6 +55,22 @@ for (i = 0; i < auktionUrl.length; i++) {
         console.log('Auktionen slut');
     }
     }
+   
+  }
+
+  function createBid() {
+    fetch("https://nackowskis.azurewebsites.net/api/bud/800/", {
+      method: "POST",
+      headers: {
+        "Accept": "application/json, text/plain, /",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+              BudID: 53,
+              Summa: 11111111111,
+              AuktionID: 1
+          })
+    }).then(res => res.json()).then(res => console.log(res));
   }
 
 loadFile();
