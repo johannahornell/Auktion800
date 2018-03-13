@@ -10,51 +10,78 @@ async function loadFile()
 {
     let auktionUrl = await fetchData('http://nackowskis.azurewebsites.net/api/Auktion/800/');
 
-for (i = 0; i < auktionUrl.length; i++) {
-    let auctionWrapper = document.getElementById("auction-wrapper");
-    let newArticle = document.createElement("article");
-    let newDivInfo = document.createElement("div");
-    let newDivBid = document.createElement("div");
+    var searchButton = document.getElementById("search-button");
 
-    let bidInput = document.createElement("input");
-    bidInput.setAttribute("type", "text");
+    searchButton.addEventListener("click", function(){
 
-    let bidBtn = document.createElement("input");
-    bidBtn.setAttribute("type", "button");
-    bidBtn.setAttribute("value", "Bud");
-    /*bidBtn.addEventListener("click", loadBid(auktionUrl[i].AuktionID));*/
+        let searchValue = document.getElementById("search-input").value;
+        let result = auktionUrl.filter(obj =>  obj.Titel.includes(searchValue));
+        let searchResultList = document.getElementById("auction-wrapper");
 
-    let temp = '';
+        searchResultList.innerHTML = "";
 
-    temp +=
-        '<h1> ' + auktionUrl[i].Titel + '</h1>' +
-        '<h4>BESKRIVNING: ' + auktionUrl[i].Beskrivning + '</h4>' +
-        '<h5>STARTDATUM: ' + auktionUrl[i].StartDatum + '</h5>' +
-        '<h5>SLUTDATUM: ' + auktionUrl[i].SlutDatum + '</h5>' +
-        '<p>UTROPSPRIS: ' + auktionUrl[i].Utropspris + ' kr' + '</p>';
-    newDivInfo.innerHTML = temp;
+        for(let object of result) {
+            if(searchValue === "" || searchValue === null) {
+                //noSearchWord.innerHTML = "Du måste skriva in ett sökord";
+                alert("Du måste fylla i ett sökord");
+                return false;
+            }
+            else {
+                let auctionObject = document.createElement("p");
+                let text = object.Titel + ", " + object.Utropspris + " kr";
+                let textNode = document.createTextNode(text);
 
-    newDivBid.appendChild(bidInput);
-    newDivBid.appendChild(bidBtn);
+                auctionObject.appendChild(textNode);
+                searchResultList.appendChild(auctionObject);
+            }
+        }
+    })
 
-    newArticle.appendChild(newDivInfo);
-    newArticle.appendChild(newDivBid);
-    auctionWrapper.appendChild(newArticle);
+  for (i = 0; i < auktionUrl.length; i++) {
+      let auctionWrapper = document.getElementById("auction-wrapper");
+      let newArticle = document.createElement("article");
+      let newDivInfo = document.createElement("div");
+      let newDivBid = document.createElement("div");
 
-    //gör om json datum till jämförbar tid
-    endDate = new Date(auktionUrl[i].SlutDatum).getTime();
+      let bidInput = document.createElement("input");
+      bidInput.setAttribute("type", "text");
 
-    //gör om dagens datum till jämförbar tid
-    let dagensDatum = new Date().getTime();
+      let bidBtn = document.createElement("input");
+      bidBtn.setAttribute("type", "button");
+      bidBtn.setAttribute("value", "Bud");
+      /*bidBtn.addEventListener("click", loadBid(auktionUrl[i].AuktionID));*/
 
-    //if-sats som får ta bort utgågna auktioner
-    if(endDate > dagensDatum) {
-        console.log('Fortfarande aktuell');
-    }
-    else {
-        console.log('Auktionen slut');
-    }
-    }
+      let temp = '';
+
+      temp +=
+          '<h1> ' + auktionUrl[i].Titel + '</h1>' +
+          '<h4>BESKRIVNING: ' + auktionUrl[i].Beskrivning + '</h4>' +
+          '<h5>STARTDATUM: ' + auktionUrl[i].StartDatum + '</h5>' +
+          '<h5>SLUTDATUM: ' + auktionUrl[i].SlutDatum + '</h5>' +
+          '<p>UTROPSPRIS: ' + auktionUrl[i].Utropspris + ' kr' + '</p>';
+      newDivInfo.innerHTML = temp;
+
+      newDivBid.appendChild(bidInput);
+      newDivBid.appendChild(bidBtn);
+
+      newArticle.appendChild(newDivInfo);
+      newArticle.appendChild(newDivBid);
+      auctionWrapper.appendChild(newArticle);
+
+      //gör om json datum till jämförbar tid
+      endDate = new Date(auktionUrl[i].SlutDatum).getTime();
+
+      //gör om dagens datum till jämförbar tid
+      let dagensDatum = new Date().getTime();
+
+      //if-sats som får ta bort utgågna auktioner
+      if(endDate > dagensDatum) {
+          console.log('Fortfarande aktuell');
+      }
+      else {
+          console.log('Auktionen slut');
+      }
   }
+}
 
 loadFile();
