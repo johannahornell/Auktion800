@@ -5,9 +5,9 @@ async function fetchData(url)
 
     return data;
 }
-async function loadBid()
+async function loadBid(id)
 {
-     let budUrl = await fetchData('http://nackowskis.azurewebsites.net/api/Bud/800/');
+     let budUrl = await fetchData('http://nackowskis.azurewebsites.net/api/Bud/800/'+ id);
 
      let bud = document.getElementById("").value //value från input
      let storstBud = 0;
@@ -22,11 +22,9 @@ for ( i = 0; i <budUrl.length; i++)
    {
    	alert("Du måste ge ett större bud");
    }
-}
 
-async function postBid(budUrl){
 
-return fetch(url, {
+ fetch(budUrl, {
   method: 'POST',
   body: JSON.stringify(storstBud), 
   headers: new Headers({
@@ -35,4 +33,5 @@ return fetch(url, {
 }).then(res => res.json())
 .catch(error => console.error('Error:', error))
 .then(response => console.log('Success:', response))
+}
 }
