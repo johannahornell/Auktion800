@@ -10,6 +10,37 @@ async function loadFile()
 {
     let auktionUrl = await fetchData('http://nackowskis.azurewebsites.net/api/Auktion/800/');
 
+<<<<<<< HEAD
+for (i = 0; i < auktionUrl.length; i++) {
+    let auctionWrapper = document.getElementById("auction-wrapper");
+    let newDiv = document.createElement("div");
+    let temp = '';
+
+
+    temp += 
+        '<h1> ' + auktionUrl[i].Titel + '</h1>' +
+        '<h4>BESKRIVNING: ' + auktionUrl[i].Beskrivning + '</h4>' +
+        '<h5>STARTDATUM: ' + auktionUrl[i].StartDatum + '</h5>' +
+        '<h5>SLUTDATUM: ' + auktionUrl[i].SlutDatum + '</h5>' +
+        '<p>UTROPSPRIS: ' + auktionUrl[i].Utropspris + ' kr' + '</p>';
+    newDiv.innerHTML = temp;
+    auctionWrapper.appendChild(newDiv);
+
+    //gör om json datum till jämförbar tid
+    endDate = new Date(auktionUrl[i].SlutDatum).getTime();
+    
+    //gör om dagens datum till jämförbar tid
+    let dagensDatum = new Date().getTime();
+
+    //if-sats som får ta bort utgågna auktioner
+    if(endDate > dagensDatum) {
+        console.log('Fortfarande aktuell');
+    }
+    else {
+        console.log('Auktionen slut');
+    }
+    }
+=======
     for (i = 0; i < auktionUrl.length; i++) {
         let auctionWrapper = document.getElementById("auction-wrapper");
         let newArticle = document.createElement("article");
@@ -42,6 +73,7 @@ async function loadFile()
         auctionWrapper.appendChild(newArticle);
 
   }
+>>>>>>> master
 }
 
 loadFile();
