@@ -11,6 +11,9 @@ async function loadFile()
     let auktionUrl = await fetchData('http://nackowskis.azurewebsites.net/api/Auktion/800/');
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 6d19623cebb71fa50affc74a69a98b42c472d4b8
     var searchButton = document.getElementById("search-button");
 
     searchButton.addEventListener("click", function(){
@@ -84,6 +87,7 @@ async function loadFile()
       }
   }
 }
+<<<<<<< HEAD
 =======
 for (i = 0; i < auktionUrl.length; i++) {
     let auctionWrapper = document.getElementById("auction-wrapper");
@@ -166,5 +170,7 @@ for (i = 0; i < auktionUrl.length; i++) {
 
 
 >>>>>>> master
+=======
+>>>>>>> 6d19623cebb71fa50affc74a69a98b42c472d4b8
 
 loadFile();
