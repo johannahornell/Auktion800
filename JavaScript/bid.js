@@ -24,14 +24,15 @@ for ( i = 0; i <budUrl.length; i++)
    }
 }
 
-async function fetch(url,{
- method: 'POST',
- body: JSON.stringify(storstaBud),
- headers: {
- 'Accept': 'application/json, text/plain, */*',
- 'Content-Type': 'application/json'
- }
- }).then(function (data) {
- console.log('Request success: ', 'posten skapad');
-}) 
+async function postBid(budUrl){
+
+return fetch(url, {
+  method: 'POST',
+  body: JSON.stringify(storstBud), 
+  headers: new Headers({
+    'Content-Type': 'application/json'
+  })
+}).then(res => res.json())
+.catch(error => console.error('Error:', error))
+.then(response => console.log('Success:', response))
 }
