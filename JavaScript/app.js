@@ -15,6 +15,15 @@ async function loadFile()
         let newArticle = document.createElement("article");
         let newDivInfo = document.createElement("div");
         let newDivBid = document.createElement("div");
+
+        let bidInput = document.createElement("input");
+        bidInput.setAttribute("type", "text");
+
+        let bidBtn = document.createElement("input");
+        bidBtn.setAttribute("type", "button");
+        bidBtn.setAttribute("value", "Bud");
+        /*bidBtn.addEventListener("click", loadBid(auktionUrl[i].AuktionID));*/
+
         let temp = '';
 
         temp +=
@@ -25,7 +34,8 @@ async function loadFile()
             '<p>UTROPSPRIS: ' + auktionUrl[i].Utropspris + ' kr' + '</p>';
         newDivInfo.innerHTML = temp;
 
-        newDivBid.innerHTML = "Hej" //Skapa input och grejer för att visa bud
+        newDivBid.appendChild(bidInput);
+        newDivBid.appendChild(bidBtn);
 
         newArticle.appendChild(newDivInfo);
         newArticle.appendChild(newDivBid);
