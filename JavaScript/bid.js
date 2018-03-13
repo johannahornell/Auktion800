@@ -32,3 +32,23 @@ for ( i = 0; i <budUrl.length; i++)
   })
 }).then(res => res.json());
 }
+
+function createBid() {
+  fetch('http://nackowskis.azurewebsites.net/api/bud/800/'{
+      method: "POST",
+      headers: {
+          "Accept": "application/json, text/plain, */*",
+          "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+          AuktionID: 75,
+          Beskrivning: "Test",
+          Gruppkod: 800,
+          startDatum: "2018-03-31T00:00:00",
+          slutDatum: "2018-03-10T00:00:00",
+          Titel: "Test Test 123",
+          UtropsPris: 1500
+      })
+  }).then(res => res.json())
+  .then(res => console.log(res));
+}
