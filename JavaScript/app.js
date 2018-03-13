@@ -75,11 +75,8 @@ async function loadFile()
       let dagensDatum = new Date().getTime();
 
       //if-sats som får ta bort utgågna auktioner
-      if(endDate > dagensDatum) {
-          console.log('Fortfarande aktuell');
-      }
-      else {
-          console.log('Auktionen slut');
+      if(endDate < dagensDatum) {
+          newArticle.style.display = "none";
       }
   }
 }
