@@ -55,6 +55,11 @@ async function loadFile()
       bidBtn.setAttribute("value", "Bud");
       /*bidBtn.addEventListener("click", loadBid(auktionUrl[i].AuktionID));*/
 
+    
+      /*let moreInfoBtn = document.createElement("input");
+      moreInfoBtn.setAttribute("type", "button");
+      moreInfoBtn.setAttribute("value", "Mer Info");*/
+
       let temp = '';
 
       temp +=
@@ -63,7 +68,16 @@ async function loadFile()
           '<p>Start: ' + auktionUrl[i].StartDatum + '</p>' +
           '<p>Slut: ' + auktionUrl[i].SlutDatum + '</p>' +
           '<p class="big">Utropspris: ' + auktionUrl[i].Utropspris + ' kr' + '</p>';
+          
       newDivInfo.innerHTML = temp;
+
+      /*let element = document.getElementsByTagName("H1");
+      element.onclick = function() {
+          article.div.p.style.display = "block";
+      };*/
+      
+      //newDivInfo.appendChild(moreInfoBtn);
+      
 
       newDivBid.appendChild(bidInput);
       newDivBid.appendChild(bidBtn);
