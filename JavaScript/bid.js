@@ -22,7 +22,6 @@ for ( i = 0; i <budUrl.length; i++)
    {
    	alert("Du måste ge ett större bud");
    }
-
 }
 
  fetch(budUrl, {
@@ -32,5 +31,3 @@ for ( i = 0; i <budUrl.length; i++)
     'Content-Type': 'application/json'
   })
 }).then(res => res.json())
-.then(response => console.log('Success:', response))
-}
