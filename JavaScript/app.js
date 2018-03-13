@@ -23,9 +23,13 @@ async function loadFile()
         for(let object of result) {
             if(searchValue === "" || searchValue === null) {
                 //noSearchWord.innerHTML = "Du måste skriva in ett sökord";
-                alert("Du måste fylla i ett sökord");
+                searchResultList.innerHTML = "Du måste skriva in ett sökord";
                 return false;
             }
+            /*else if(typeof result !== 'undefined' && result.length > 0) {
+                searchResultList.innerHTML = "Din sökning gav 0 träffar";
+                return false;
+            }*/
             else {
                 let auctionObject = document.createElement("p");
                 let text = object.Titel + ", " + object.Utropspris + " kr";
