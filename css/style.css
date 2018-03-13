@@ -17,7 +17,7 @@ body {
 }
 .navigation-wrapper {
     width: 100%;
-    background-color: #5fa09a;
+    background-color: #F53656;
     margin-bottom: 1em;
 }
 .navigation-content {
@@ -62,22 +62,32 @@ body {
 }
 
 .auction-wrapper {
-    max-width: 1024px;
-    margin: 0 auto;
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    flex-direction: column;
+    text-align: center;
 }
+
 .auction-wrapper div {
     width: 32%;
     background-color: rgb(180, 192, 188);
     padding: 1em;
     margin-bottom: 1em;
 }
-.auction-wrapper ul {
-    margin: 0;
-    padding: 0;
+
+.auction-wrapper h1 {
+    color: white;  
 }
-.auction-wrapper li {
-    list-style: none;
+
+.auction-wrapper h4 {
+    color: white;  
+}
+
+.auction-wrapper h5 {
+    color: #52C7EB;
+}
+
+.auction-wrapper p {
+    color: green;
+    font-weight: bold;
+    font-size: 1.3rem;
 }
