@@ -141,7 +141,7 @@ function createBid() {
       },
       body: JSON.stringify({
               BudID: 192,
-              Summa: 2222,
+              Summa: 123456789,
               AuktionID: 28
           })
     }).then(res => res.json()).then(res => console.log(res));
