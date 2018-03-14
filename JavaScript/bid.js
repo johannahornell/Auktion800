@@ -1,5 +1,5 @@
 
-  /* 
+  /*
  fetch(budUrl, {
   method: 'POST',
   body: JSON.stringify(storstBud),
@@ -16,12 +16,24 @@
 
 class bid{
 constructor(auctionsId, budId, summa )
-{
-this.AuktionID = auctionsId;
-this.BudID = budId;
-this.Summa = summa;
+  {
+  this.AuktionID = auctionsId;
+  this.BudID = budId;
+  this.Summa = summa;
+  }
 }
-    ValidBid()
+
+function createBid(value) {
+    fetch("https://nackowskis.azurewebsites.net/api/bud/800/", {
+      method: "POST",
+      headers: {
+        "Accept": "application/json, text/plain, /",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(value)
+    });
+}
+/*    ValidBid()
         {
             let budUrl = await fetchData('http://nackowskis.azurewebsites.net/api/bud/800/');
 
@@ -46,5 +58,4 @@ this.Summa = summa;
 
 
 for ( i = 0; i <budUrl.length; i++){
-}
-
+*/
