@@ -131,9 +131,6 @@ async function loadFile()
   }
 }
 
-<<<<<<< HEAD
-
-=======
 loadFile();
 
 
@@ -146,11 +143,10 @@ function createBid() {
       },
       body: JSON.stringify({
               BudID: 192,
-              Summa: 2222,
+              Summa: 101010101,
               AuktionID: 28
           })
     }).then(res => res.json()).then(res => console.log(res));
 }
     
-//createBid();
->>>>>>> master
+createBid();
