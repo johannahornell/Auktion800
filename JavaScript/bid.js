@@ -1,30 +1,4 @@
-async function fetchData(url)
-{
-    let promise = await fetch(url);
-    let data = await promise.json();
 
-    return data;
-}
-async function loadBid(id)
-{
-     let budUrl = await fetchData('http://nackowskis.azurewebsites.net/api/bud/800/');
-
-     let bud = document.getElementById("").value //value från input
-     let storstBud = 0;
-
-    for ( i = 0; i <budUrl.length; i++)
-    {
-      if (bud > storstaBud) //om budet inte är störst.
-          {
-              storstaBud = bud;// skapa och lägg in i ptagg - text "Budet är för litet, skriv ett nytt"
-          }
-      else
-          {
-   	          alert("Du måste ge ett större bud");
-          }
-    }
-
-}
   /* 
  fetch(budUrl, {
   method: 'POST',
@@ -39,49 +13,36 @@ async function loadBid(id)
 }).then(res => res.json());
 }*/
 
+
 class bid{
 constructor(auctionsId, budId, summa )
 {
-this.AuktionsID = auctionsId;
+this.AuktionID = auctionsId;
 this.BudID = budId;
 this.Summa = summa;
 }
-ValidBid()
-{
-     let budUrl = await fetchData('http://nackowskis.azurewebsites.net/api/bud/800/');
+    ValidBid()
+        {
+            let budUrl = await fetchData('http://nackowskis.azurewebsites.net/api/bud/800/');
 
-     let bud = document.getElementById("").value //hur få fram rätt value från input???
-     let storstBud = 0;
+            let bud = document.getElementById("").value //hur få fram rätt value från input??? let bud = value
+            let storstBud = 0;
 
-    for ( i = 0; i <budUrl.length; i++)
-    {
-      if (bud > storstaBud) //om budet inte är störst.
-          {
-              storstaBud = bud;// skapa och lägg in i ptagg - text "Budet är för litet, skriv ett nytt"
-          }
-      else
-          {
-              alert("Du måste ge ett större bud");
-          }
-    }
+            for ( i = 0; i <budUrl.length; i++)
+            {
+                 if (bud > storstaBud) //om budet inte är störst.
+                  {
+                      storstaBud = bud;
+                      document.getElementById("").innerHTML = "Största Bud: " + bud;// skapa och lägg in i ptagg - text "Budet är för litet, skriv ett nytt"
+                  }
+                  else
+                  {
+                      document.getElementById("").innerHTML = "Ange ett större bud.";
+                  }
+        }
+  }
 }
 
-function createBid() {
-  fetch('http://nackowskis.azurewebsites.net/api/bud/800/',{
-      method: "POST",
-      headers: {
-          "Accept": "application/json, text/plain, */*",
-          "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-          AuktionID: 2,
-          BudID: 75,
-          Summa: 1500
-      })
-  }).then(res => res.json()).then(res => console.log(res));
-}
-createBid();
 
-for ( i = 0; i <budUrl.length; i++){
-}
+
 
