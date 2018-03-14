@@ -131,6 +131,9 @@ async function loadFile()
   }
 }
 
+<<<<<<< HEAD
+
+=======
 loadFile();
 
 
@@ -150,3 +153,4 @@ function createBid() {
 }
     
 //createBid();
+>>>>>>> master
