@@ -33,6 +33,7 @@ function createTest(articleObject, hide) {
     let readMoreBtn = document.createElement("input");
     readMoreBtn.setAttribute("type", "button");
     readMoreBtn.setAttribute("value", "Läs mer");
+    readMoreBtn.setAttribute("class", "btn");
 
     //Funktion som sker när en användare klickar på läs mer
     readMoreBtn.addEventListener("click", function(){
