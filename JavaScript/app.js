@@ -6,14 +6,13 @@ async function fetchData(url)
     return data;
 }
 
-function createArticle(articleObject, hide) {
+function createTest(articleObject, hide) {
 
     let auctionTitle = articleObject.Titel;
     let auctionPrice = articleObject.Utropspris;
     let auctionDescription = articleObject.Beskrivning;
     let auctionStart = articleObject.StartDatum;
     let auctionEnd = articleObject.SlutDatum;
-    let auctionId = articleObject.AuktionID;
 
     let auctionWrapper = document.getElementById("auction-wrapper");
     let newArticle = document.createElement("article");
@@ -52,10 +51,6 @@ function createArticle(articleObject, hide) {
         let bidBtn = document.createElement("input");
         bidBtn.setAttribute("type", "button");
         bidBtn.setAttribute("value", "Bud");
-        bidBtn.addEventListener("click", function() {
-            let amount = bidInput.value;
-            SendBid(auctionId, amount)
-        })
 
         let backButton = document.createElement("a");
         backButton.href = "index.html"
@@ -100,12 +95,6 @@ function createArticle(articleObject, hide) {
 
 }
 
-function SendBid(id, amount) {
-    let newBid = new bid(id, 0, amount);
-
-    createBid(newBid);
-}
-
 async function loadFile()
 {
     let auktionUrl = await fetchData('http://nackowskis.azurewebsites.net/api/Auktion/800/');
@@ -122,6 +111,7 @@ async function loadFile()
 
         for(let object of result) {
             if(searchValue === "" || searchValue === null) {
+                //noSearchWord.innerHTML = "Du måste skriva in ett sökord";
                 displayWrapper.innerHTML = "Du måste skriva in ett sökord";
                 return false;
             }
@@ -130,20 +120,19 @@ async function loadFile()
                 return false;
             }*/
             else {
-                createArticle(object, false);
+                createTest(object, false);
             }
         }
     })
 
-    for (i = 0; i < auktionUrl.length; i++) {
+  for (i = 0; i < auktionUrl.length; i++) {
 
-        createArticle(auktionUrl[i], true);
-    }
+      createTest(auktionUrl[i], true);
+  }
 }
 
 loadFile();
 
-<<<<<<< HEAD
 
 function createBid() {
     fetch("https://nackowskis.azurewebsites.net/api/bud/800/", {
@@ -160,7 +149,4 @@ function createBid() {
     }).then(res => res.json()).then(res => console.log(res));
 }
     
-createBid();
-=======
 //createBid();
->>>>>>> master
