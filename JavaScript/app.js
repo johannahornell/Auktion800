@@ -131,11 +131,7 @@ async function loadFile()
   }
 }
 
-<<<<<<< HEAD
-
-=======
 loadFile();
-
 
 function createBid() {
     fetch("https://nackowskis.azurewebsites.net/api/bud/800/", {
@@ -151,11 +147,5 @@ function createBid() {
           })
     }).then(res => res.json()).then(res => console.log(res));
 }
-<<<<<<< HEAD
 
 //createBid();
-=======
-    
-//createBid();
->>>>>>> master
->>>>>>> master
