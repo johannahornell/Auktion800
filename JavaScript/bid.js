@@ -28,6 +28,7 @@ this.Summa = summa;
             let bud = document.getElementById("").value //hur få fram rätt value från input??? let bud = value
             let storstBud = 0;
 
+<<<<<<< HEAD
             for ( i = 0; i <budUrl.length; i++)
             {
                  if (bud > storstaBud) //om budet inte är störst.
@@ -46,3 +47,7 @@ this.Summa = summa;
 
 
 
+=======
+for ( i = 0; i <budUrl.length; i++){
+}
+>>>>>>> master
