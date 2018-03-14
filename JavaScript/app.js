@@ -133,7 +133,6 @@ async function loadFile()
 
 loadFile();
 
-
 function createBid() {
     fetch("https://nackowskis.azurewebsites.net/api/bud/800/", {
       method: "POST",
