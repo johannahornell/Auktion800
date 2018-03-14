@@ -33,6 +33,7 @@ function createTest(articleObject, hide) {
     let readMoreBtn = document.createElement("input");
     readMoreBtn.setAttribute("type", "button");
     readMoreBtn.setAttribute("value", "Läs mer");
+    readMoreBtn.setAttribute("class", "btn");
 
     //Funktion som sker när en användare klickar på läs mer
     readMoreBtn.addEventListener("click", function(){
@@ -127,8 +128,24 @@ async function loadFile()
   for (i = 0; i < auktionUrl.length; i++) {
 
       createTest(auktionUrl[i], true);
-
   }
 }
 
 loadFile();
+
+function createBid() {
+    fetch("https://nackowskis.azurewebsites.net/api/bud/800/", {
+      method: "POST",
+      headers: {
+        "Accept": "application/json, text/plain, /",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+              BudID: 192,
+              Summa: 2222,
+              AuktionID: 28
+          })
+    }).then(res => res.json()).then(res => console.log(res));
+}
+
+//createBid();
