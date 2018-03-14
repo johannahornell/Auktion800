@@ -142,5 +142,3 @@ async function loadFile()
 }
 
 loadFile();
-
-//createBid();
