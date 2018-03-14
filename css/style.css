@@ -74,22 +74,10 @@ body {
     background-color: #24292E;
     border-bottom: 1px solid black;
     padding: 1em;
+    color: #fff;
+}
+.big {
+    font-size: 1.3em;
+    color: #F53656;
 }
 
-.auction-wrapper h1 {
-    color: white;
-}
-
-.auction-wrapper h4 {
-    color: white;
-}
-
-.auction-wrapper h5 {
-    color: #52C7EB;
-}
-
-.auction-wrapper p {
-    color: green;
-    font-weight: bold;
-    font-size: 1.3rem;
-}
