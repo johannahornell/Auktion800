@@ -80,9 +80,4 @@ body {
     font-size: 1.3em;
     color: #F53656;
 }
-article div p {
-    display: none;
-}
-article div p:nth-child(5) {
-    display: block;
-}
+
