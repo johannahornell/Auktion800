@@ -6,7 +6,7 @@ async function fetchData(url)
     return data;
 }
 
-function createTest(articleObject, hide) {
+function createArticle(articleObject, hide) {
 
     let auctionTitle = articleObject.Titel;
     let auctionPrice = articleObject.Utropspris;
@@ -111,7 +111,6 @@ async function loadFile()
 
         for(let object of result) {
             if(searchValue === "" || searchValue === null) {
-                //noSearchWord.innerHTML = "Du måste skriva in ett sökord";
                 displayWrapper.innerHTML = "Du måste skriva in ett sökord";
                 return false;
             }
@@ -120,15 +119,15 @@ async function loadFile()
                 return false;
             }*/
             else {
-                createTest(object, false);
+                createArticle(object, false);
             }
         }
     })
 
-  for (i = 0; i < auktionUrl.length; i++) {
+    for (i = 0; i < auktionUrl.length; i++) {
 
-      createTest(auktionUrl[i], true);
-  }
+        createArticle(auktionUrl[i], true);
+    }
 }
 
 loadFile();
