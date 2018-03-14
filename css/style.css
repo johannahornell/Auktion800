@@ -100,3 +100,11 @@ body {
 .auction-info h1 {
   margin-top: 0;
 }
+.btn {
+    background-color: #F53656;
+    border: none;
+    color: white;
+    padding: 0.5em 1em;
+    text-align: center;
+    cursor: pointer;
+}
