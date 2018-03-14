@@ -129,6 +129,10 @@ async function loadFile()
   }
 }
 
+
+loadFile();
+
+
 function createBid() {
     fetch("https://nackowskis.azurewebsites.net/api/bud/800/", {
       method: "POST",
@@ -137,13 +141,11 @@ function createBid() {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-              BudID: 53,
-              Summa: 11111111111,
-              AuktionID: 1
+              BudID: 192,
+              Summa: 2222,
+              AuktionID: 28
           })
     }).then(res => res.json()).then(res => console.log(res));
 }
-
-
-
-loadFile();
+    
+//createBid();
