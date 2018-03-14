@@ -131,9 +131,6 @@ async function loadFile()
   }
 }
 
-<<<<<<< HEAD
-
-=======
 loadFile();
 
 
@@ -151,11 +148,5 @@ function createBid() {
           })
     }).then(res => res.json()).then(res => console.log(res));
 }
-<<<<<<< HEAD
 
 //createBid();
-=======
-    
-//createBid();
->>>>>>> master
->>>>>>> master
