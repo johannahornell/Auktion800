@@ -13,6 +13,7 @@ function createArticle(articleObject, hide) {
     let auctionDescription = articleObject.Beskrivning;
     let auctionStart = articleObject.StartDatum;
     let auctionEnd = articleObject.SlutDatum;
+    let auctionId = articleObject.AuktionID;
 
     let auctionWrapper = document.getElementById("auction-wrapper");
     let newArticle = document.createElement("article");
@@ -51,6 +52,10 @@ function createArticle(articleObject, hide) {
         let bidBtn = document.createElement("input");
         bidBtn.setAttribute("type", "button");
         bidBtn.setAttribute("value", "Bud");
+        bidBtn.addEventListener("click", function() {
+            let amount = bidInput.value;
+            SendBid(auctionId, amount)
+        })
 
         let backButton = document.createElement("a");
         backButton.href = "index.html"
@@ -95,6 +100,12 @@ function createArticle(articleObject, hide) {
 
 }
 
+function SendBid(id, amount) {
+    let newBid = new bid(id, 0, amount);
+
+    createBid(newBid);
+}
+
 async function loadFile()
 {
     let auktionUrl = await fetchData('http://nackowskis.azurewebsites.net/api/Auktion/800/');
@@ -131,20 +142,5 @@ async function loadFile()
 }
 
 loadFile();
-
-function createBid() {
-    fetch("https://nackowskis.azurewebsites.net/api/bud/800/", {
-      method: "POST",
-      headers: {
-        "Accept": "application/json, text/plain, /",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-              BudID: 192,
-              Summa: 2222,
-              AuktionID: 28
-          })
-    }).then(res => res.json()).then(res => console.log(res));
-}
 
 //createBid();
