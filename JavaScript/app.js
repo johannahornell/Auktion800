@@ -128,6 +128,8 @@ async function loadFile()
   for (i = 0; i < auktionUrl.length; i++) {
 
       createTest(auktionUrl[i], true);
+  }
+}
 
 loadFile();
 
