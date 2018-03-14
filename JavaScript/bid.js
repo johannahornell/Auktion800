@@ -7,7 +7,6 @@ async function fetchData(url)
 }
 async function loadBid(id)
 {
-
      let budUrl = await fetchData('http://nackowskis.azurewebsites.net/api/Bud/800/'+ id);
 
      let bud = document.getElementById("").value //value från input
@@ -15,16 +14,17 @@ async function loadBid(id)
 
 for ( i = 0; i <budUrl.length; i++)
 {
-   if (bud > storstaBud) //om budet inte är störst.
-   {
-      storstaBud = bud;// skapa och lägg in i ptagg - text "Budet är för litet, skriv ett nytt"
-   }
-   else
-   {
-   	alert("Du måste ge ett större bud");
-   }
-}
-
-}
-
-
+    function createBid() {
+        fetch("https://nackowskis.azurewebsites.net/api/bud/800/", {
+          method: "POST",
+          headers: {
+            "Accept": "application/json, text/plain, /",
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+                  BudID: 53,
+                  Summa: 11111111111,
+                  AuktionID: 1
+              })
+        }).then(res => res.json()).then(res => console.log(res));
+    }
