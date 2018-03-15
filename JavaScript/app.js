@@ -32,11 +32,12 @@ function createArticle(articleObject, hide) {
     readMoreBtn.setAttribute("value", "Läs mer");
     readMoreBtn.setAttribute("class", "btn");
 
-     //if-sats som döljer budknapp och input om utgången auktion
-    if (endDate < dagensDatum) {
-       bidBtn.style.display = "none";
-       bidInput.style.display = "none";
-    }
+   
+    //gör om json datum till jämförbar tid
+    let endDate = new Date(auctionEnd).getTime();
+
+    //gör om dagens datum till jämförbar tid
+    let dagensDatum = new Date().getTime();
 
     //Funktion som sker när en användare klickar på läs mer
     readMoreBtn.addEventListener("click", function(){
@@ -110,6 +111,13 @@ function createArticle(articleObject, hide) {
             }
         })
 
+
+  //if-sats som döljer budknapp och input om utgången auktion
+    if (endDate < dagensDatum) {
+       bidBtn.style.display = "none";
+       bidInput.style.display = "none";
+    }
+
         let backButton = document.createElement("a");
         backButton.href = "index.html"
         backButton.innerHTML = "Tillbaka"
@@ -143,11 +151,6 @@ function createArticle(articleObject, hide) {
   newArticle.appendChild(readMoreBtn);
   auctionWrapper.appendChild(newArticle);
 
-  //gör om json datum till jämförbar tid
-  endDate = new Date(auctionEnd).getTime();
-
-  //gör om dagens datum till jämförbar tid
-  let dagensDatum = new Date().getTime();
 
   //if-sats som får ta bort utgågna auktioner
   if(endDate < dagensDatum && hide == true) {
