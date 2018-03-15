@@ -17,6 +17,20 @@ function createArticle(articleObject, hide) {
     let auctionEnd = articleObject.SlutDatum;
     let auctionId = articleObject.AuktionID;
 
+    let days = ['Söndag', 'Måndag', 'Tisdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lördag'];
+    let d = new Date(auctionStart);
+    let dayName = days[d.getDay()];
+    let date = new Date(auctionStart);
+    let dDate = date.toLocaleString();
+
+    let d2 = new Date(auctionEnd);
+    let dayName2 = days[d2.getDay()];
+    let date2 = new Date(auctionEnd);
+    let dDate2 = date2.toLocaleString();
+
+    let dateStart = dayName + " " + dDate;
+    let dateEnd = dayName2 + " " + dDate2;
+
     //Skapar element som ska fyllas med innehåll
     let auctionWrapper = document.getElementById("auction-wrapper");
     let newArticle = document.createElement("article");
@@ -140,8 +154,8 @@ function createArticle(articleObject, hide) {
         auctionInfoText +=
         '<h1> ' + auctionTitle + '</h1>' +
         '<p>' + auctionDescription + '</p>' +
-        '<p>Start: ' + auctionStart + '</p>' +
-        '<p>Slut: ' + auctionEnd + '</p>' +
+        '<p>Start: ' + dateStart + '</p>' +
+        '<p>Slut: ' + dateEnd + '</p>' +
         '<p class="big">Utropspris: ' + auctionPrice + ' kr' + '</p>';
 
         newDivInfo.innerHTML = auctionInfoText;
