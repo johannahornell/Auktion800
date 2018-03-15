@@ -6,8 +6,10 @@ async function fetchData(url)
     return data;
 }
 
+//Funktion för att skapa artiklar för alla auktioner som finns på api:en
 function createArticle(articleObject, hide) {
 
+    //Hämtar in information från api
     let auctionTitle = articleObject.Titel;
     let auctionPrice = articleObject.Utropspris;
     let auctionDescription = articleObject.Beskrivning;
@@ -15,6 +17,7 @@ function createArticle(articleObject, hide) {
     let auctionEnd = articleObject.SlutDatum;
     let auctionId = articleObject.AuktionID;
 
+    //Skapar element som ska fyllas med innehåll
     let auctionWrapper = document.getElementById("auction-wrapper");
     let newArticle = document.createElement("article");
     newArticle.setAttribute("class", "article-wrapper");
@@ -25,18 +28,18 @@ function createArticle(articleObject, hide) {
     articleTitle.innerHTML = auctionTitle;
 
     let articlePrice = document.createElement("p");
-    articlePrice.setAttribute("class", "big");
-    articlePrice.innerHTML = auctionPrice + "kr";
-
-    let articleBids = document.createElement("p");
-    articleBids.innerHTML = "0 bud"; //Ändra till antalet bud som lagts på auktionen
+    articlePrice.innerHTML = "Utropspris: </br>" + auctionPrice + "kr";
 
     let readMoreBtn = document.createElement("input");
     readMoreBtn.setAttribute("type", "button");
     readMoreBtn.setAttribute("value", "Läs mer");
     readMoreBtn.setAttribute("class", "btn");
 
-    
+    //gör om json datum till jämförbar tid
+    let endDate = new Date(auctionEnd).getTime();
+
+    //gör om dagens datum till jämförbar tid
+    let dagensDatum = new Date().getTime();
 
     //Funktion som sker när en användare klickar på läs mer
     readMoreBtn.addEventListener("click", function(){
@@ -49,34 +52,50 @@ function createArticle(articleObject, hide) {
         let newDivBid = document.createElement("div");
         newDivBid.setAttribute("class", "bid-div");
 
+        let bidText = document.createElement("p");
+        bidText.innerHTML = "Lägg ett bud";
+
         let bidInput = document.createElement("input");
         bidInput.setAttribute("type", "text");
 
+         let validateBid = document.createElement("p");
+        validateBid.setAttribute("id", "validate-bids");
         let highestBid = document.createElement("p");
         let amountBid = document.createElement("p");
         let bidDisplayBtn = document.createElement("input");
         bidDisplayBtn.setAttribute("type", "button");
-        bidDisplayBtn.setAttribute("value", "Visa alla bud");
+        bidDisplayBtn.setAttribute("value", "(Visa alla bud)");
         bidDisplayBtn.setAttribute("id", "show-bids");
         let bidDisplay = document.createElement("p");
 
         let leadingBid = 0;
+
+        //Används för att hämta budhistorik
         async function displayBidHistory()
         {
             let bidUrl = await fetchData('http://nackowskis.azurewebsites.net/api/bud/800/' + auctionId);
 
-
+            //Tar fram det största budet som lagts
             for (let i = 0; i < bidUrl.length; i++) {
 
                 if (bidUrl[i].Summa > leadingBid) {
                   leadingBid = bidUrl[i].Summa;
                 }
             }
-
             highestBid.innerHTML = "Ledande bud: " + leadingBid;
+
+            //if-sats som döljer budknapp,input och budhistorik om auktion gått ut
+            if (endDate < dagensDatum) {
+               bidBtn.style.display = "none";
+               bidInput.style.display = "none";
+               bidDisplayBtn.style.display = "none";
+               amountBid.style.display = "none";
+               highestBid.innerHTML = "Vinnande bud: " + leadingBid;
+            }
 
             amountBid.innerHTML = "Antal bud: " + bidUrl.length;
 
+            //Skriver ut all budhistorik
             bidDisplayBtn.addEventListener("click", function() {
                 bidDisplay.innerHTML = "";
                 for (let i = 0; i < bidUrl.length; i++) {
@@ -95,12 +114,13 @@ function createArticle(articleObject, hide) {
 
             let amount = bidInput.value;
 
+            //Ser till att användaren skrivit in något, och ändrar ledande bud om nytt bud läggs till
             if(amount == null || amount == "") {
-                alert("Ange ett bud");
+                document.getElementById("validate-bids").innerHTML = "Ange ett bud";
                 return false;
             }
             else if(amount < leadingBid) {
-                alert("Du måste ange ett högre bud");
+                document.getElementById("validate-bids").innerHTML = "Du måste ange ett högre bud";
                 return false;
             }
             else {
@@ -125,8 +145,10 @@ function createArticle(articleObject, hide) {
 
         newDivInfo.innerHTML = auctionInfoText;
 
+        newDivBid.appendChild(bidText);
         newDivBid.appendChild(bidInput);
         newDivBid.appendChild(bidBtn);
+        newDivBid.appendChild(validateBid);
         newDivBid.appendChild(highestBid);
         newDivBid.appendChild(amountBid);
         newDivBid.appendChild(bidDisplayBtn);
@@ -140,15 +162,9 @@ function createArticle(articleObject, hide) {
   newArticle.appendChild(articleImage);
   newArticle.appendChild(articleTitle);
   newArticle.appendChild(articlePrice);
-  newArticle.appendChild(articleBids);
   newArticle.appendChild(readMoreBtn);
   auctionWrapper.appendChild(newArticle);
 
-  //gör om json datum till jämförbar tid
-  endDate = new Date(auctionEnd).getTime();
-
-  //gör om dagens datum till jämförbar tid
-  let dagensDatum = new Date().getTime();
 
   //if-sats som får ta bort utgågna auktioner
   if(endDate < dagensDatum && hide == true) {
