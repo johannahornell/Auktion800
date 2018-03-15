@@ -24,7 +24,7 @@ function createArticle(articleObject, hide) {
       let date = new Date(auctionStart);
       let dDate = date.toLocaleString();
 
-      let d2 = new Date(auctionStart);
+      let d2 = new Date(auctionEnd);
       let dayName2 = days[d2.getDay()];
       let date2 = new Date(auctionEnd);
       let dDate2 = date2.toLocaleString();
@@ -220,6 +220,12 @@ async function loadFile()
 
         priceBtn.addEventListener("click", function(){
             let sortPrice = result.sort((value1, value2) => parseInt(value1.Utropspris) - parseInt(value2.Utropspris));
+          
+            for(let object of sortPrice) {
+                createArticle(object, false);
+            }
+        })
+
             displayWrapper.innerHTML = "";
 
             for(let object of sortPrice) {
@@ -227,6 +233,7 @@ async function loadFile()
                 createArticle(object, false);
             }
         })
+
 
         let dateBtn = document.createElement("input");
         dateBtn.setAttribute("type", "button");
