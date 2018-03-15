@@ -36,6 +36,12 @@ function createArticle(articleObject, hide) {
     readMoreBtn.setAttribute("value", "Läs mer");
     readMoreBtn.setAttribute("class", "btn");
 
+     //if-sats som döljer budknapp och input om utgången auktion
+    if (endDate < dagensDatum) {
+       bidBtn.style.display = "none";
+       bidInput.style.display = "none";
+    }
+
     //Funktion som sker när en användare klickar på läs mer
     readMoreBtn.addEventListener("click", function(){
 
