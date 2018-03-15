@@ -52,6 +52,9 @@ function createArticle(articleObject, hide) {
         let newDivBid = document.createElement("div");
         newDivBid.setAttribute("class", "bid-div");
 
+        let bidText = document.createElement("p");
+        bidText.innerHTML = "Lägg ett bud";
+
         let bidInput = document.createElement("input");
         bidInput.setAttribute("type", "text");
 
@@ -59,7 +62,7 @@ function createArticle(articleObject, hide) {
         let amountBid = document.createElement("p");
         let bidDisplayBtn = document.createElement("input");
         bidDisplayBtn.setAttribute("type", "button");
-        bidDisplayBtn.setAttribute("value", "Visa alla bud");
+        bidDisplayBtn.setAttribute("value", "(Visa alla bud)");
         bidDisplayBtn.setAttribute("id", "show-bids");
         let bidDisplay = document.createElement("p");
 
@@ -140,6 +143,7 @@ function createArticle(articleObject, hide) {
 
         newDivInfo.innerHTML = auctionInfoText;
 
+        newDivBid.appendChild(bidText);
         newDivBid.appendChild(bidInput);
         newDivBid.appendChild(bidBtn);
         newDivBid.appendChild(highestBid);
