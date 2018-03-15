@@ -24,7 +24,7 @@ function createArticle(articleObject, hide) {
       let date = new Date(auctionStart);
       let dDate = date.toLocaleString();
 
-      let d2 = new Date(auctionStart);
+      let d2 = new Date(auctionEnd);
       let dayName2 = days[d2.getDay()];
       let date2 = new Date(auctionEnd);
       let dDate2 = date2.toLocaleString();
