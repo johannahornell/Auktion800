@@ -204,16 +204,28 @@ async function loadFile()
 
         priceBtn.addEventListener("click", function(){
             let sortPrice = result.sort((value1, value2) => parseInt(value1.Utropspris) - parseInt(value2.Utropspris));
+            displayWrapper.innerHTML = "";
+
             for(let object of sortPrice) {
+
                 createArticle(object, false);
             }
-            console.log(sortPrice);
         })
-
 
         let dateBtn = document.createElement("input");
         dateBtn.setAttribute("type", "button");
         dateBtn.setAttribute("value", "Datum");
+
+        dateBtn.addEventListener("click", function(){
+
+            let sortDate = result.sort((value1, value2) => new Date(value1.SlutDatum).getTime() - new Date(value2.SlutDatum).getTime());
+            displayWrapper.innerHTML = "";
+
+            for(let object of sortDate) {
+
+                createArticle(object, false);
+            }
+        })
 
         displayWrapper.innerHTML = "";
         sortWrapper.innerHTML = "";
