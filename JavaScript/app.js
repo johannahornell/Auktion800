@@ -87,6 +87,7 @@ function createArticle(articleObject, hide) {
             //if-sats som döljer budknapp,input och budhistorik om auktion gått ut
             if (endDate < dagensDatum) {
                bidBtn.style.display = "none";
+               bidText.style.display = "none";
                bidInput.style.display = "none";
                bidDisplayBtn.style.display = "none";
                amountBid.style.display = "none";
