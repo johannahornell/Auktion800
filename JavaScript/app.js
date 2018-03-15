@@ -17,21 +17,19 @@ function createArticle(articleObject, hide) {
     let auctionEnd = articleObject.SlutDatum;
     let auctionId = articleObject.AuktionID;
 
-       let days = ['Söndag', 'Måndag', 'Tisdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lördag'];
-    //  let d = new Date(weather2.list[i].dt_txt);
-      let d = new Date(auctionStart);
-      let dayName = days[d.getDay()];
-      let date = new Date(auctionStart);
-      let dDate = date.toLocaleString();
+    let days = ['Söndag', 'Måndag', 'Tisdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lördag'];
+    let d = new Date(auctionStart);
+    let dayName = days[d.getDay()];
+    let date = new Date(auctionStart);
+    let dDate = date.toLocaleString();
 
-      let d2 = new Date(auctionEnd);
-      let dayName2 = days[d2.getDay()];
-      let date2 = new Date(auctionEnd);
-      let dDate2 = date2.toLocaleString();
+    let d2 = new Date(auctionEnd);
+    let dayName2 = days[d2.getDay()];
+    let date2 = new Date(auctionEnd);
+    let dDate2 = date2.toLocaleString();
 
-      let dateStart = dayName + " " + dDate;
-
-      let dateEnd = dayName2 + " " + dDate2;
+    let dateStart = dayName + " " + dDate;
+    let dateEnd = dayName2 + " " + dDate2;
 
     //Skapar element som ska fyllas med innehåll
     let auctionWrapper = document.getElementById("auction-wrapper");
@@ -220,12 +218,6 @@ async function loadFile()
 
         priceBtn.addEventListener("click", function(){
             let sortPrice = result.sort((value1, value2) => parseInt(value1.Utropspris) - parseInt(value2.Utropspris));
-          
-            for(let object of sortPrice) {
-                createArticle(object, false);
-            }
-        })
-
             displayWrapper.innerHTML = "";
 
             for(let object of sortPrice) {
@@ -233,7 +225,6 @@ async function loadFile()
                 createArticle(object, false);
             }
         })
-
 
         let dateBtn = document.createElement("input");
         dateBtn.setAttribute("type", "button");
