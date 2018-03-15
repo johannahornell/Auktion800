@@ -45,16 +45,67 @@ function createArticle(articleObject, hide) {
 
         let newDivInfo = document.createElement("div");
         let newDivBid = document.createElement("div");
+        newDivBid.setAttribute("class", "bid-div");
 
         let bidInput = document.createElement("input");
         bidInput.setAttribute("type", "text");
+
+        let highestBid = document.createElement("p");
+        let amountBid = document.createElement("p");
+        let bidDisplayBtn = document.createElement("input");
+        bidDisplayBtn.setAttribute("type", "button");
+        bidDisplayBtn.setAttribute("value", "Visa alla bud");
+        bidDisplayBtn.setAttribute("id", "show-bids");
+        let bidDisplay = document.createElement("p");
+
+        let leadingBid = 0;
+        async function displayBidHistory()
+        {
+            let bidUrl = await fetchData('http://nackowskis.azurewebsites.net/api/bud/800/' + auctionId);
+
+
+            for (let i = 0; i < bidUrl.length; i++) {
+
+                if (bidUrl[i].Summa > leadingBid) {
+                  leadingBid = bidUrl[i].Summa;
+                }
+            }
+
+            highestBid.innerHTML = "Ledande bud: " + leadingBid;
+
+            amountBid.innerHTML = "Antal bud: " + bidUrl.length;
+
+            bidDisplayBtn.addEventListener("click", function() {
+                bidDisplay.innerHTML = "";
+                for (let i = 0; i < bidUrl.length; i++) {
+
+                    bidDisplay.innerHTML += bidUrl[i].Summa + "<br>";
+                }
+            })
+        }
+
+        displayBidHistory();
 
         let bidBtn = document.createElement("input");
         bidBtn.setAttribute("type", "button");
         bidBtn.setAttribute("value", "Bud");
         bidBtn.addEventListener("click", function() {
+
             let amount = bidInput.value;
-            SendBid(auctionId, amount)
+
+            if(amount == null || amount == "") {
+                alert("Ange ett bud");
+                return false;
+            }
+            else if(amount < leadingBid) {
+                alert("Du måste ange ett högre bud");
+                return false;
+            }
+            else {
+                SendBid(auctionId, amount);
+                leadingBid = amount;
+                highestBid.innerHTML = "Ledande bud: " + leadingBid;
+            }
         })
 
         let backButton = document.createElement("a");
@@ -74,6 +125,10 @@ function createArticle(articleObject, hide) {
 
         newDivBid.appendChild(bidInput);
         newDivBid.appendChild(bidBtn);
+        newDivBid.appendChild(highestBid);
+        newDivBid.appendChild(amountBid);
+        newDivBid.appendChild(bidDisplayBtn);
+        newDivBid.appendChild(bidDisplay);
         showArticle.appendChild(newDivInfo);
         showArticle.appendChild(newDivBid);
         auctionWrapper.appendChild(showArticle);
@@ -118,24 +173,40 @@ async function loadFile()
         let searchValue = document.getElementById("search-input").value;
         let result = auktionUrl.filter(obj =>  obj.Titel.includes(searchValue));
 
+        let sortWrapper = document.getElementById("sort-wrapper");
+        let sortText = document.createElement("p");
+        sortText.innerHTML = "Sortera efter:"
+
+        let priceBtn = document.createElement("input");
+        priceBtn.setAttribute("type", "button");
+        priceBtn.setAttribute("value", "Pris");
+
+        let dateBtn = document.createElement("input");
+        dateBtn.setAttribute("type", "button");
+        dateBtn.setAttribute("value", "Datum");
+
         displayWrapper.innerHTML = "";
+        sortWrapper.innerHTML = "";
 
         for(let object of result) {
             if(searchValue === "" || searchValue === null) {
                 displayWrapper.innerHTML = "Du måste skriva in ett sökord";
                 return false;
             }
-            /*else if(typeof result !== 'undefined' && result.length > 0) {
-                searchResultList.innerHTML = "Din sökning gav 0 träffar";
+            /*else if(typeof result == 'undefined' && result.length > 0) {
+                displayWrapper.innerHTML = "Din sökning gav 0 träffar";
                 return false;
             }*/
             else {
                 createArticle(object, false);
             }
+            sortWrapper.appendChild(sortText);
+            sortWrapper.appendChild(priceBtn);
+            sortWrapper.appendChild(dateBtn);
         }
     })
 
-    for (i = 0; i < auktionUrl.length; i++) {
+    for (let i = 0; i < auktionUrl.length; i++) {
 
         createArticle(auktionUrl[i], true);
     }
