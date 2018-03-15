@@ -58,6 +58,8 @@ function createArticle(articleObject, hide) {
         let bidInput = document.createElement("input");
         bidInput.setAttribute("type", "text");
 
+         let validateBid = document.createElement("p");
+        validateBid.setAttribute("id", "validate-bids");
         let highestBid = document.createElement("p");
         let amountBid = document.createElement("p");
         let bidDisplayBtn = document.createElement("input");
@@ -114,11 +116,11 @@ function createArticle(articleObject, hide) {
 
             //Ser till att användaren skrivit in något, och ändrar ledande bud om nytt bud läggs till
             if(amount == null || amount == "") {
-                alert("Ange ett bud");
+                document.getElementById("validate-bids").innerHTML = "Ange ett bud";
                 return false;
             }
             else if(amount < leadingBid) {
-                alert("Du måste ange ett högre bud");
+                document.getElementById("validate-bids").innerHTML = "Du måste ange ett högre bud";
                 return false;
             }
             else {
@@ -146,6 +148,7 @@ function createArticle(articleObject, hide) {
         newDivBid.appendChild(bidText);
         newDivBid.appendChild(bidInput);
         newDivBid.appendChild(bidBtn);
+        newDivBid.appendChild(validateBid);
         newDivBid.appendChild(highestBid);
         newDivBid.appendChild(amountBid);
         newDivBid.appendChild(bidDisplayBtn);

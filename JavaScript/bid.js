@@ -16,4 +16,8 @@ class bid{
           },
           body: JSON.stringify(value)
         });
+
     }
+
+    
+
