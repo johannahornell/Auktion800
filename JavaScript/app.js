@@ -25,11 +25,7 @@ function createArticle(articleObject, hide) {
     articleTitle.innerHTML = auctionTitle;
 
     let articlePrice = document.createElement("p");
-    articlePrice.setAttribute("class", "big");
-    articlePrice.innerHTML = auctionPrice + "kr";
-
-    let articleBids = document.createElement("p");
-    articleBids.innerHTML = "0 bud"; //Ändra till antalet bud som lagts på auktionen
+    articlePrice.innerHTML = "Utropspris: </br>" + auctionPrice + "kr";
 
     let readMoreBtn = document.createElement("input");
     readMoreBtn.setAttribute("type", "button");
@@ -144,7 +140,6 @@ function createArticle(articleObject, hide) {
   newArticle.appendChild(articleImage);
   newArticle.appendChild(articleTitle);
   newArticle.appendChild(articlePrice);
-  newArticle.appendChild(articleBids);
   newArticle.appendChild(readMoreBtn);
   auctionWrapper.appendChild(newArticle);
 
