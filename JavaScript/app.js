@@ -103,6 +103,7 @@ function createArticle(articleObject, hide) {
             //if-sats som döljer budknapp,input och budhistorik om auktion gått ut
             if (endDate < dagensDatum) {
                bidBtn.style.display = "none";
+               bidText.style.display = "none";
                bidInput.style.display = "none";
                bidDisplayBtn.style.display = "none";
                amountBid.style.display = "none";
@@ -199,6 +200,8 @@ async function loadFile()
 {
     let auktionUrl = await fetchData('http://nackowskis.azurewebsites.net/api/Auktion/800/');
 
+    //var auctionPrice = auktionUrl[1].Utropspris;
+    //console.log(auctionPrice);
     var searchButton = document.getElementById("search-button");
     let displayWrapper = document.getElementById("auction-wrapper");
 
@@ -214,6 +217,15 @@ async function loadFile()
         let priceBtn = document.createElement("input");
         priceBtn.setAttribute("type", "button");
         priceBtn.setAttribute("value", "Pris");
+
+        priceBtn.addEventListener("click", function(){
+            let sortPrice = result.sort((value1, value2) => parseInt(value1.Utropspris) - parseInt(value2.Utropspris));
+            for(let object of sortPrice) {
+                createArticle(object, false);
+            }
+            console.log(sortPrice);
+        })
+
 
         let dateBtn = document.createElement("input");
         dateBtn.setAttribute("type", "button");
