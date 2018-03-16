@@ -16,8 +16,6 @@ async function loadFile()
 {
     let auktionUrl = await fetchData('http://nackowskis.azurewebsites.net/api/Auktion/800/');
 
-    //var auctionPrice = auktionUrl[1].Utropspris;
-    //console.log(auctionPrice);
     var searchButton = document.getElementById("search-button");
     let displayWrapper = document.getElementById("auction-wrapper");
 
