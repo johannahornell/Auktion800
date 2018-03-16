@@ -79,7 +79,7 @@ function createArticle(articleObject, hide) {
         //Används för att hämta budhistorik
         async function displayBidHistory()
         {
-            let bidUrl = await fetchData('http://nackowskis.azurewebsites.net/api/bud/800/' + auctionId);
+            let bidUrl = await fetchData('https://nackowskis.azurewebsites.net/api/bud/800/' + auctionId);
 
             //Tar fram det största budet som lagts
             for (let i = 0; i < bidUrl.length; i++) {
